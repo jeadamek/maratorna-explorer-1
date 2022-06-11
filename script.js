@@ -30,11 +30,12 @@ function fazerPergunta(){
    if(inputPergunta.value == ""){
       alert("Digite sua pergunta")
       return
-   }
-
+   }  
+   
    buttonPerguntar.setAttribute("disabled", true)
-
+   
    const pergunta = "<div>" + inputPergunta.value + "</div>"
+   inputPergunta.value = ""
 
    // gerar numero aleatorio
    const totalRespostas = respostas.length
@@ -48,4 +49,10 @@ function fazerPergunta(){
       elementoResposta.style.opacity = 0
       buttonPerguntar.removeAttribute("disabled")
    }, 3000)
+}
+
+inputPergunta.onkeydown = function(e){
+   if(e.keyCode == 13){
+     fazerPergunta()
+   }
 }
